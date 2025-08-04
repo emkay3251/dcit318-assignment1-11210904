@@ -41,7 +41,7 @@ namespace MultiPurposeApp
         }
 
 
-    // 1. Grade Calculator
+    //  Grade Calculator
         static void GradeCalculator()
         {
             Console.Clear();
@@ -68,6 +68,28 @@ namespace MultiPurposeApp
             else
             {
                 Console.WriteLine("Invalid input. Please enter a number.");
+            }
+
+            Console.WriteLine("Press Enter to return to the main menu.");
+            Console.ReadLine();
+        }
+
+
+//      Ticket Price Calculator
+        static void TicketPriceCalculator()
+        {
+            Console.Clear();
+            Console.WriteLine("=== Ticket Price Calculator ===");
+            Console.Write("Enter your age: ");
+
+            if (int.TryParse(Console.ReadLine(), out int age))
+            {
+                double price = (age <= 12 || age >= 65) ? 7.0 : 10.0;
+                Console.WriteLine($"Your ticket price is: GHC{price}");
+            }
+            else
+            {
+                Console.WriteLine("Invalid input. Please enter a valid age.");
             }
 
             Console.WriteLine("Press Enter to return to the main menu.");
