@@ -75,7 +75,7 @@ namespace MultiPurposeApp
         }
 
 
-//      Ticket Price Calculator
+//  Ticket Price Calculator
         static void TicketPriceCalculator()
         {
             Console.Clear();
@@ -95,3 +95,54 @@ namespace MultiPurposeApp
             Console.WriteLine("Press Enter to return to the main menu.");
             Console.ReadLine();
         }
+
+        //  Triangle Type Identifier
+        static void TriangleTypeIdentifier()
+        {
+            Console.Clear();
+            Console.WriteLine("=== Triangle Type Identifier ===");
+
+            Console.Write("Enter side A: ");
+            double sideA = GetSide();
+
+            Console.Write("Enter side B: ");
+            double sideB = GetSide();
+
+            Console.Write("Enter side C: ");
+            double sideC = GetSide();
+
+            if (IsValidTriangle(sideA, sideB, sideC))
+            {
+                if (sideA == sideB && sideB == sideC)
+                    Console.WriteLine("This is an Equilateral triangle.");
+                else if (sideA == sideB || sideB == sideC || sideA == sideC)
+                    Console.WriteLine("This is an Isosceles triangle.");
+                else
+                    Console.WriteLine("This is a Scalene triangle.");
+            }
+            else
+            {
+                Console.WriteLine("The given sides do not form a valid triangle.");
+            }
+
+            Console.WriteLine("Press Enter to return to the main menu.");
+            Console.ReadLine();
+        }
+
+        static double GetSide()
+        {
+            while (true)
+            {
+                if (double.TryParse(Console.ReadLine(), out double side) && side > 0)
+                    return side;
+                else
+                    Console.Write("Invalid input. Enter a positive number: ");
+            }
+        }
+
+        static bool IsValidTriangle(double a, double b, double c)
+        {
+            return (a + b > c) && (a + c > b) && (b + c > a);
+        }
+    }
+}
